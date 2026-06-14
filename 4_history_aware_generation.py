@@ -47,8 +47,10 @@ def ask_question(user_question):
         print(f"  Doc {i}: {preview}...")
     
     # Step 3: Create final prompt
-    combined_input = f"""Based on the following documents, please answer this question: {user_question}
+   docs_text = "\n".join([f"- {doc.page_content}" for doc in docs])
 
+combined_input = f"""Based on the following documents:
+{docs_text}
     Documents:
     {"\n".join([f"- {doc.page_content}" for doc in docs])}
 
